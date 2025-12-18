@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>嘴平伊之助的简历</title>
+    <style>
+        html { scroll-behavior: smooth; }
+        body{
+            font-family: "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+            background:#f3f6fb;
+            color:#222;
+            margin:0;
+            padding:20px;
+        }
+        .container{
+            max-width:1000px;
+            margin:0 auto;
+            background:#fff;
+            padding:20px 24px;
+            border-radius:10px;
+            box-shadow:0 8px 24px rgba(15,23,42,0.06);
+        }
+        .nav{ display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; position:sticky; top:12px; z-index:20; }
+        .nav a{ background:#2b6cb0; color:#fff; padding:8px 14px; border-radius:6px; text-decoration:none; font-weight:600; }
+        .nav a:hover{ background:#1f4f8a; }
+        .header { display:grid; grid-template-columns: auto 420px; gap:18px; align-items:center; margin-bottom:18px; }
+        .profile-img{ width:160px; height:160px; object-fit:cover; border-radius:8px; border:2px solid #eee; margin:0; }
+        .profile-info{ display:grid; grid-template-columns: auto 1fr; gap:16px; align-items:start; }
+        .profile-meta h2{ margin:0 0 6px 0; font-size:20px; }
+        .meta-desc{ color:#556070; margin:6px 0 0; }
+        .media video{ width:100%; height:auto; border-radius:8px; }
+        h3{ color:#1f2937; margin-top:18px; margin-bottom:10px; }
+        .content > div{ margin-bottom:12px; text-indent:1.8em; line-height:1.7; }
+        .clearfix{ clear:both; }
+        audio, video{ width:100%; max-width:600px; display:block; margin:10px 0; }
+        .return-top{ display:inline-block; margin:12px 0; color:#2b6cb0; text-decoration:none; }
+        .return-top:hover{ text-decoration:underline; }
+        /* 简单的 ticker 替代 marquee */
+        .ticker{ width:100%; background:#e6f0ff; border-radius:6px; padding:8px; overflow:hidden; box-sizing:border-box; }
+        .ticker-inner{ display:flex; gap:40px; animation: ticker 12s linear infinite; }
+        .ticker-inner p{ margin:0; white-space:nowrap; color:#153e75; font-weight:600; }
+        @keyframes ticker{ from{ transform:translateX(0%);} to{ transform:translateX(-50%);} }
+
+        /* Section & cards */
+        .section{ margin-top:18px; padding:14px; background:linear-gradient(180deg,#ffffff 0,#fbfdff 100%); border-radius:8px; box-shadow:0 4px 12px rgba(15,23,42,0.03); position:relative; }
+        .section-inner{ display:grid; grid-template-columns: 1fr 1fr; gap:16px; align-items:start; }
+        
+        .edu-right h4{ margin:6px 0; }
+        .cards{ display:grid; grid-template-columns: repeat(auto-fit,minmax(200px,1fr)); gap:12px; }
+        .card{ background:#fff; border:1px solid #eef3fb; padding:12px; border-radius:8px; }
+        .timeline{ padding-left:18px; }
+        .timeline li{ margin-bottom:10px; }
+
+        /* return button fixed (single floating button) */
+        #returnBtn{ position:fixed; right:20px; bottom:20px; width:52px; height:52px; border-radius:50%; background:linear-gradient(180deg,#3aa0ff,#2b6cb0); color:#fff; display:flex; align-items:center; justify-content:center; font-size:20px; text-decoration:none; box-shadow:0 12px 30px rgba(43,108,176,0.28); border:none; opacity:0; transform:translateY(8px) scale(.98); transition:opacity .28s ease, transform .28s cubic-bezier(.2,.9,.2,1); z-index:60; }
+        #returnBtn:hover{ transform:translateY(0) scale(1.04); }
+        #returnBtn.visible{ opacity:1; transform:none; }
+
+        .content p{ margin-bottom:12px; text-indent:1.6em; line-height:1.7; }
+
+        @media (max-width:900px){ .section-inner{ grid-template-columns:1fr; } }
+        @media (max-width:700px){ .profile-img{ width:120px; height:120px; float:none; display:block; margin:0 auto 12px; } .nav{ justify-content:center; } .container{ padding:16px; } .ticker-inner{ animation-duration:18s; } }
+        /* badges, icons, hover and reveal */
+        .badges{ margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
+        .badge{ background:#eef6ff; color:#1f4f8a; padding:6px 8px; border-radius:999px; font-weight:600; font-size:13px; border:1px solid #d7e9ff; }
+        .section h3{ display:flex; align-items:center; gap:10px; font-size:1.2em; }
+        .section h3 .icon{ font-size:20px; display:inline-flex; width:28px; height:28px; align-items:center; justify-content:center; }
+        .card{ transition:transform .22s ease, box-shadow .22s ease; }
+        .card:hover{ transform:translateY(-6px); box-shadow:0 12px 30px rgba(15,23,42,0.08); }
+        .reveal{ opacity:0; transform:translateY(12px); transition:all .6s cubic-bezier(.2,.9,.2,1); }
+        .reveal.visible{ opacity:1; transform:none; }
+        .timeline li{ position:relative; padding-left:14px; }
+        .timeline li:before{ content:''; position:absolute; left:0; top:6px; width:8px; height:8px; background:#2b6cb0; border-radius:50%; }
+    </style>
+</head>
+    <a id="顶部"></a>
+    <div class="container">
+        <div class="nav">
+            <a href="#111">个人简介</a>
+            <a href="#222">教育经历</a>
+            <a href="#333">获奖经历</a>
+            <a href="#444">实习经历</a>
+        </div>
+
+        <div class="header">
+            <div class="profile-info reveal">
+                <img src="微信图片_20251127163014_183_2.jpg" class="profile-img" title="庄欣妍的照片" alt="庄欣妍照片">
+                <div class="profile-meta">
+                    <h2>嘴平伊之助</h2>
+                    <div class="badges">
+                        <span class="badge">野外生存</span>
+                        <span class="badge">二刀流</span>
+                        <span class="badge">嗅觉敏锐</span>
+                    </div>
+                    <p class="meta-desc">鬼杀队剑士，擅长近身格斗与山林生存。</p>
+                </div>
+            </div>
+            <div class="media reveal">
+                <video src="2025-11-27_180158_433.mp4" controls poster="eg_cute.gif" preload="auto" loop muted></video>
+            </div>
+        </div>
+
+        <section id="111" class="section reveal">
+            <h3><span class="icon">👤</span>个人简介</h3>
+            <img src="微信图片_20251127163014_183_2.jpg" class="profile-img" title="庄欣妍的照片" alt="庄欣妍照片" usemap="#映射图片名称">
+            <map name="映射图片名称">
+                <area shape="circle" coords="150,50,50" href="https://www.baidu.com" target="_blank">
+                <area shape="circle" coords="10,190,10" href="https://www.360.com" target="_blank">
+            </map>
+            <div class="ticker" aria-hidden="false">
+                <div class="ticker-inner">
+                    <p>嘴平伊之助，鬼杀队成员，现为潜入游郭寻找宇髓天元三位妻子而女扮男装中</p>
+                    <p>性格鲁莽好战，自创“兽之呼吸”，擅长近身战与敏锐触觉。</p>
+                </div>
+            </div>
+            <div class="badges">
+                <span class="badge">孤儿</span>
+                <span class="badge">野猪养大</span>
+                <span class="badge">身世悲惨</span>
+                <span class="badge">野外生存</span>
+            </div>
+
+            <div class="content">
+                <p>俺叫嘴平伊之助！是在山林里长大的最强猎手——不管是飞禽走兽还是恶鬼，只要被俺盯上，就别想逃跑！</p>
+                <p>天生就会用斧头砍杀，后来拿上了双斧刀，劈开恶鬼的脑袋就跟劈柴一样简单！肌肉是俺最骄傲的资本，力气大到能掀翻野猪、撞断大树，不管多硬的恶鬼外壳，俺一斧头下去就能碎！</p>
+            </div>
+        </section>
+
+        <section id="222" class="section reveal">
+            <h3><span class="icon">🎓</span>教育经历</h3>
+            <div class="section-inner">
+                <div class="edu-left">
+                    <iframe name="北京大学" scrolling="no" src="https://www.pku.edu.cn" width="100%" height="280" style="border:1px solid #e6eaf0; border-radius:6px;"></iframe>
+                </div>
+                <div class="edu-right">
+                    <h4>我的母校</h4>
+                    <p>在北大深造，主修山林生存学与对鬼的研究，期间多次获得优秀狩猎实践奖。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="333" class="section reveal">
+            <h3><span class="icon">🏆</span>获奖经历</h3>
+            <div class="cards">
+                <div class="card"><strong>最强山林生存王</strong><p>凭借野外生存能力获得该荣誉。</p></div>
+                <div class="card"><strong>除鬼先锋奖</strong><p>多次斩鬼立功，团队表彰。</p></div>
+            </div>
+        </section>
+
+        <section id="444" class="section reveal">
+            <h3><span class="icon">🛠️</span>实习经历</h3>
+            <ol class="timeline">
+                <li><time>2024</time> 深山生存实战营：独立搭建避风窝并通过生存考核。</li>
+                <li><time>2025</time> 鬼杀队短期见习：参与数次除鬼行动并获表彰。</li>
+            </ol>
+        </section>
+
+        <a class="return-top" id="returnBtn" href="#顶部" aria-label="返回顶部" title="返回顶部">↑</a>
+    </div>
+    <script>
+        // 清除初始 hash 并滚动到顶部（页面加载时）
+        (function(){ if(location.hash){ try{ history.replaceState(null, document.title, location.pathname + location.search); }catch(e){} window.scrollTo(0,0);} })();
+
+        const returnBtn = document.getElementById('returnBtn');
+        if(returnBtn){
+            // 点击平滑滚动到顶部，并清理哈希
+            returnBtn.addEventListener('click', function(e){
+                e.preventDefault();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                try{ history.replaceState(null, document.title, location.pathname + location.search); }catch(e){}
+            });
+
+            // 控制显隐，通过 class 'visible'
+            const toggleReturn = ()=> returnBtn.classList.toggle('visible', window.scrollY > 200);
+            window.addEventListener('scroll', toggleReturn);
+            // 初始化显隐状态
+            toggleReturn();
+        }
+
+        // Reveal on scroll using IntersectionObserver
+        (function(){
+            const obs = new IntersectionObserver((entries)=>{
+                entries.forEach(ent=>{ if(ent.isIntersecting){ ent.target.classList.add('visible'); obs.unobserve(ent.target); } });
+            },{ threshold: 0.12 });
+            document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+        })();
+    </script>
+</body>
+</html>
